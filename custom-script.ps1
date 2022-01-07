@@ -10,4 +10,4 @@ $org = (Invoke-RestMethod -Uri "https://vmss-devops-agents-kv.vault.azure.net/se
 
 az login --identity --username $identity
 
-docker run -e AZP_URL=$org -e AZP_TOKEN=$path -e AZP_AGENT_NAME="$(hostname)" -e AZP_POOL=$agentPool -d $acr/azdevopsagent:latest
+docker run -e AZP_URL="$org" -e AZP_TOKEN="$path" -e AZP_AGENT_NAME="$(hostname)" -e AZP_POOL="$agentPool" -d "$acr/azdevopsagent:latest"
