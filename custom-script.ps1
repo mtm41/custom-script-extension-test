@@ -1,7 +1,6 @@
-$response = (Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -Method GET -Headers @{Metadata="true"})
-echo $response
-echo $response > log.txt
-$key = $response.Content | ConvertFrom-Json
+Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/mtm41/custom-script-extension-test/main/test.py' -OutFile .\test.py
+$response = (python.exe .\test.py)
+$key = $response | ConvertFrom-Json
 $KeyVaultToken = $key.access_token
 
 $pat = (Invoke-RestMethod -Uri "https://vmss-devops-agents-kv.vault.azure.net/secrets/vmss-devops-agents-pat?api-version=2016-10-01" -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).value
