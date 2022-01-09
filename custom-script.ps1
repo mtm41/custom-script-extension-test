@@ -1,5 +1,6 @@
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/mtm41/custom-script-extension-test/main/test.py' -OutFile .\test.py
-$response = (python.exe .\test.py)
+$response = (C:\Users\devopsAdm37\AppData\Local\Programs\Python\Python310\python.exe .\test.py)
+echo $response > log.txt
 $key = $response | ConvertFrom-Json
 $KeyVaultToken = $key.access_token
 
