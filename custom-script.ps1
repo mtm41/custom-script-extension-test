@@ -11,5 +11,6 @@ $identity = (Invoke-RestMethod -Uri "https://vmss-devops-agents-kv.vault.azure.n
 $org = (Invoke-RestMethod -Uri "https://vmss-devops-agents-kv.vault.azure.net/secrets/vmss-devops-agents-org?api-version=2016-10-01" -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).value
 
 az login --identity --username $identity
+az acr login --name $acr
 
 docker run -e AZP_URL="$org" -e AZP_TOKEN="$path" -e AZP_AGENT_NAME="$(hostname)" -e AZP_POOL="$agentPool" -d "$acr/azdevopsagent:latest"
