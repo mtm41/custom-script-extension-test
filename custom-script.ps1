@@ -1,4 +1,4 @@
-$ComputerName = "vmss-X99M7G-1"
+$ComputerName = "vmss-X99M7G-$(Get-Random -Maximum 100)"
    
 Remove-ItemProperty -path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -name "Hostname" 
 Remove-ItemProperty -path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -name "NV Hostname" 
